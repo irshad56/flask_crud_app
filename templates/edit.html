@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Student</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: linear-gradient(120deg, #74ebd5, #ACB6E5);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .card {
+            width: 450px;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            background-color: white;
+        }
+        .card-header {
+            background-color: #6c63ff;
+            color: white;
+            text-align: center;
+            font-weight: 600;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+        .btn-primary {
+            background-color: #6c63ff;
+            border: none;
+            transition: 0.3s;
+        }
+        .btn-primary:hover {
+            background-color: #4c48c8;
+        }
+        .form-control:focus {
+            border-color: #6c63ff;
+            box-shadow: 0 0 0 0.2rem rgba(108, 99, 255, 0.25);
+        }
+        .back-btn {
+            text-decoration: none;
+            color: #6c63ff;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="card-header">
+            Edit Student Details ✏️
+        </div>
+        <div class="card-body">
+
+            {% if error %}
+            <div class="alert alert-danger text-center" role="alert">
+                {{ error }}
+            </div>
+            {% endif %}
+
+            <form method="POST">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Student Name</label>
+                    <input type="text" class="form-control" id="name" name="name" value="{{ student.name }}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="email" class="form-control" id="email" name="email" value="{{ student.email }}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="age" class="form-label">Age</label>
+                    <input type="number" class="form-control" id="age" name="age" value="{{ student.age }}" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">💾 Save Changes</button>
+            </form>
+        </div>
+        <div class="card-footer text-center">
+            <a href="{{ url_for('index') }}" class="back-btn">⬅️ Back to Student List</a>
+        </div>
+    </div>
+</body>
+</html>
